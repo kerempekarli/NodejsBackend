@@ -4,10 +4,12 @@ const helmet = require("helmet");
 const loaders = require("./loaders");
 const {ProjectRoutes, UserRoutes} = require("./api-routes")
 const uuid = require("uuid");
+const events = require("./scripts/events");
 
 
 config();
 loaders();
+events();
 
 const app = express();
 app.use(express.json())
