@@ -1,0 +1,18 @@
+{"level":"info","message":{"_id":"6333b7884064f3ca82804b5e","createdAt":"2022-09-28T02:55:04.418Z","name":"Test Project","updatedAt":"2022-09-28T02:55:04.418Z"},"service":"user-service"}
+{"level":"info","message":{"_id":"63360ddcc94e5898bcec214f","createdAt":"2022-09-29T21:27:56.214Z","name":"Test Project","updatedAt":"2022-09-29T21:27:56.214Z"},"service":"user-service"}
+{"level":"info","message":{"_id":"63360e0d8884a5be2ef17c72","createdAt":"2022-09-29T21:28:45.221Z","name":"Test Project","updatedAt":"2022-09-29T21:28:45.221Z"},"service":"user-service"}
+{"level":"info","message":{"_id":"633610e1eb7151113c83a5eb","createdAt":"2022-09-29T21:40:49.032Z","name":"Test Project","updatedAt":"2022-09-29T21:40:49.032Z"},"service":"user-service"}
+{"level":"info","message":{"_id":"6336116bb031fa31248fd44e","createdAt":"2022-09-29T21:43:07.258Z","name":"Test Project","updatedAt":"2022-09-29T21:43:07.258Z"},"service":"user-service"}
+{"level":"info","message":{"_id":"6336119b989e60f10c926888","createdAt":"2022-09-29T21:43:55.387Z","name":"Test Project","updatedAt":"2022-09-29T21:43:55.387Z"},"service":"user-service"}
+{"level":"info","message":{"_id":"6336120243aa65d457bb14af","createdAt":"2022-09-29T21:45:38.893Z","name":"Test Project","updatedAt":"2022-09-29T21:45:38.893Z"},"service":"user-service"}
+{"level":"info","message":{"_id":"6336124ee74c2c365d76c5a5","createdAt":"2022-09-29T21:46:54.448Z","name":"Test Project","updatedAt":"2022-09-29T21:46:54.448Z"},"service":"user-service"}
+{"level":"info","message":{"_id":"6336125594563caeffabaf22","createdAt":"2022-09-29T21:47:01.837Z","name":"Test Project","updatedAt":"2022-09-29T21:47:01.837Z"},"service":"user-service"}
+{"level":"info","message":{"_id":"633612731978f808595a6deb","createdAt":"2022-09-29T21:47:31.839Z","name":"deneme projesi 5","updatedAt":"2022-09-29T21:47:31.839Z"},"service":"user-service"}
+{"level":"info","message":{"_id":"63361299c82272ba522ec6c9","createdAt":"2022-09-29T21:48:09.884Z","name":"deneme projesi 5","updatedAt":"2022-09-29T21:48:09.884Z","user_id":"6334fd7a281885c6bbc3bdd6"},"service":"user-service"}
+{"level":"info","message":{"_id":"6336156bc82272ba522ec6cb","createdAt":"2022-09-29T22:00:11.122Z","name":"deneme projesi 5","updatedAt":"2022-09-29T22:00:11.122Z","user_id":"6334fd7a281885c6bbc3bdd6"},"service":"user-service"}
+{"level":"info","message":{"_id":"63361609c82272ba522ec6cd","createdAt":"2022-09-29T22:02:49.381Z","name":"deneme projesi 5","updatedAt":"2022-09-29T22:02:49.381Z","user_id":"6334fd7a281885c6bbc3bdd6"},"service":"user-service"}
+{"level":"info","message":{"_id":"63362450c9bcc78361ef9339","createdAt":"2022-09-29T23:03:44.805Z","name":"deneme projesi 1","updatedAt":"2022-09-29T23:03:44.805Z","user_id":"6334fd7a281885c6bbc3bdd6"},"service":"user-service"}
+{"level":"info","message":{"_id":"63362ed9281bab8cb39782d5","createdAt":"2022-09-29T23:48:41.965Z","name":"deneme projesi 1","updatedAt":"2022-09-29T23:48:41.965Z","user_id":"6334fd7a281885c6bbc3bdd6"},"service":"user-service"}
+{"level":"info","message":{"_id":"63362eda281bab8cb39782d7","createdAt":"2022-09-29T23:48:42.980Z","name":"deneme projesi 1","updatedAt":"2022-09-29T23:48:42.980Z","user_id":"6334fd7a281885c6bbc3bdd6"},"service":"user-service"}
+{"level":"info","message":{"_id":"63362edf281bab8cb39782d9","createdAt":"2022-09-29T23:48:47.139Z","name":"deneme projesi 1","updatedAt":"2022-09-29T23:48:47.139Z","user_id":"6334fd7a281885c6bbc3bdd6"},"service":"user-service"}
+{"level":"info","message":{"_id":"63362ee0281bab8cb39782db","createdAt":"2022-09-29T23:48:48.041Z","name":"deneme projesi 1","updatedAt":"2022-09-29T23:48:48.041Z","user_id":"6334fd7a281885c6bbc3bdd6"},"service":"user-service"}
