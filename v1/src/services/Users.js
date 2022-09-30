@@ -14,8 +14,10 @@ const loginUser = (loginData) => {
 };
 
 const modify = (where, data ) => {
-  if(data?.password) delete data.password
   return User.findOneAndUpdate(where,data,{new: true});
+}
+const remove = (id) => {
+  return User.findByIdAndDelete(id);
 }
 
 module.exports = {
@@ -23,5 +25,5 @@ module.exports = {
   list,
   loginUser,
   modify,
-  
+  remove
 };
