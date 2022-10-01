@@ -16,3 +16,5 @@
 {"level":"info","message":{"_id":"63362eda281bab8cb39782d7","createdAt":"2022-09-29T23:48:42.980Z","name":"deneme projesi 1","updatedAt":"2022-09-29T23:48:42.980Z","user_id":"6334fd7a281885c6bbc3bdd6"},"service":"user-service"}
 {"level":"info","message":{"_id":"63362edf281bab8cb39782d9","createdAt":"2022-09-29T23:48:47.139Z","name":"deneme projesi 1","updatedAt":"2022-09-29T23:48:47.139Z","user_id":"6334fd7a281885c6bbc3bdd6"},"service":"user-service"}
 {"level":"info","message":{"_id":"63362ee0281bab8cb39782db","createdAt":"2022-09-29T23:48:48.041Z","name":"deneme projesi 1","updatedAt":"2022-09-29T23:48:48.041Z","user_id":"6334fd7a281885c6bbc3bdd6"},"service":"user-service"}
+{"level":"info","message":{"_id":"6337c8509f7a4890f8ca92b1","createdAt":"2022-10-01T04:55:44.053Z","name":"deneme section","updatedAt":"2022-10-01T04:55:44.053Z","user_id":"633694c3603e04e9fa91555d"},"service":"user-service"}
+{"level":"info","message":{"_id":"6337c8579f7a4890f8ca92b3","createdAt":"2022-10-01T04:55:51.809Z","name":"deneme section","updatedAt":"2022-10-01T04:55:51.809Z","user_id":"633694c3603e04e9fa91555d"},"service":"user-service"}
