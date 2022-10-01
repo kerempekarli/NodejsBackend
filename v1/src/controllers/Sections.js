@@ -2,7 +2,8 @@ const { insert, list, modify, remove } = require("../services/sections");
 const httpStatus = require("http-status");
 
 const create = (req, res) => {
-  req.body.user_id = req.user;
+
+  req.body.user_id = req.user._id;
   insert(req.body)
     .then((response) => {
       res.status(httpStatus.CREATED).send("response" + response);
@@ -10,11 +11,12 @@ const create = (req, res) => {
     .catch((e) => {
       res.status(httpStatus.INTERNAL_SERVER_ERROR).send(e);
     });
-};
+};  
 
 const index = (req, res) => {
-
-  list()
+  console.log(req.params.projectId)
+    if(!req?.params?.projectId){return res.status(httpStatus.BAD_REQUEST).send({error: "Proje bilgisi eksik"})}
+  list({project_id: req.params.projectId})
     .then((response) => {
       res.status(httpStatus.OK).send(response);
     })
@@ -28,8 +30,8 @@ const update = (req, res) => {
     });
   } else {
     modify(req.params.id, req.body)
-      .then((updatedProject) => {
-        res.status(httpStatus.OK).send(updatedProject);
+      .then((updatedDoc) => {
+        res.status(httpStatus.OK).send(updatedDoc);
       })
       .catch((e) =>
         res
@@ -48,7 +50,7 @@ const deleteSection = (req, res) => {
         })
       }
       res.status(httpStatus.OK).send({
-        message: "Proje silindi"
+        message: "Section silindi"
       });
     })
     .catch((e) =>

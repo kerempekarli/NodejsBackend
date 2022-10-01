@@ -14,7 +14,7 @@ const SectionSchema = new Mongoose.Schema(
       type: Mongoose.Types.ObjectId,
       ref:"project",
     },
-    order: Number 
+    order: Number, 
   },
   {
     timestamps: true,
@@ -31,4 +31,4 @@ SectionSchema.post("save", (doc) => {
   })
 });
 
-module.exports = Mongoose.model("section", SectionSchema);
+module.exports = Mongoose.model("section",SectionSchema);

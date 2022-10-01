@@ -5,10 +5,10 @@ const  authenticate  = require("../middlewares/authenticate")
 const schemas = require("../validations/Sections");
 const router = express.Router();
 
-router.route("/").get(authenticate, index);
+router.route("/:projectId").get(authenticate, index);
 router.route("/").post(authenticate, validate(schemas.createValidation), create);
-// router.route("/:id").patch(authenticate, validate(schemas.updateValidation), update)
-// router.route("/:id").delete(authenticate, deleteSection);
+router.route("/:id").patch(authenticate, validate(schemas.updateValidation), update)
+router.route("/:id").delete(authenticate, deleteSection);
 
 
 module.exports = router

@@ -1,8 +1,9 @@
 const Section = require("../models/Sections");
 
-const  insert = (sectionData) => {
-  const Section = new Section(sectionData);
-    return Section.save();
+const insert = (sectionData) => {
+
+  const tempSection = new Section(sectionData);
+  return tempSection.save();
 }
 
 const list = (where) => {

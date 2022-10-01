@@ -22,5 +22,5 @@ app.use(fileUpload())
 app.listen(process.env.APP_PORT , () => {
     app.use("/projects", ProjectRoutes )
     app.use("/users",UserRoutes)
-    app.use("/section",SectionRoutes)
+    app.use("/sections",SectionRoutes)
 })
