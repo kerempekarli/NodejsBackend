@@ -45,7 +45,7 @@ const deleteSection = (req, res) => {
   remove(req.params.id)
     .then((deletedProject) => {
       if(!deletedProject){
-        res.status(httpStatus.NOT_FOUND).send({
+        res.status(httpStatus.NOT_FOUND).send({   
           message:"Böyle bir kayıt bulunmamaktadır"
         })
       }
