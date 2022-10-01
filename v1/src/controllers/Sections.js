@@ -49,7 +49,7 @@ const deleteSection = (req, res) => {
           message:"Böyle bir kayıt bulunmamaktadır"
         })
       }
-      res.status(httpStatus.OK).send({
+      res.status(httpStatus.OK).send({ 
         message: "Section silindi"
       });
     })
