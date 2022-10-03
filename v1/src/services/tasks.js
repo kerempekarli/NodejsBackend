@@ -1,5 +1,10 @@
 const Task = require("../models/Tasks");
 
+
+const findOne = (where) => {
+  return Task.findOne(where);
+}
+
 const insert = (TaskData) => {
 
   const tempTask = new Task(TaskData);
@@ -7,7 +12,7 @@ const insert = (TaskData) => {
 }
 
 const list = (where) => {
-   return Task.find(where || {}).populate({
+   return Task.findOne(where || {}).populate({
     path : "user_id",
     select : "full_name email"
    })
@@ -23,5 +28,5 @@ const remove = (id) => {
 
 
 module.exports = {
-    insert, list, modify,remove
+    insert, list, modify,remove,findOne
 };
