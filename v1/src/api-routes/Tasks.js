@@ -1,5 +1,5 @@
 const express = require("express");
-const { create,index,update,deleteTask,makeComment } = require("../controllers/Tasks");
+const { create,index,update,deleteTask,makeComment,deleteComment } = require("../controllers/Tasks");
 const validate = require("../middlewares/validate")
 const  authenticate  = require("../middlewares/authenticate")
 const schemas = require("../validations/Tasks");

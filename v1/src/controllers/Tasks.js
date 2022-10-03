@@ -68,56 +68,66 @@ const makeComment = (req, res) => {
   console.log(req.body.user_id);
   findOne({
     _id: req.params.id,
-  }).then((mainTask) => {
-    if (!mainTask) {
-      return res
-        .status(httpStatus.NOT_FOUND)
-        .send({ message: "böyle bir kullanıcı bulunmamaktadır" });
-    }
-    console.log(mainTask);
+  })
+    .then((mainTask) => {
+      if (!mainTask) {
+        return res
+          .status(httpStatus.NOT_FOUND)
+          .send({ message: "böyle bir kullanıcı bulunmamaktadır" });
+      }
 
-    const comment = { 
-      ...req.body,
-      comment_at:new Date(),
-      user_id : req.user
-    }
-    mainTask.comments.push(comment);
-    mainTask.save().then(updatedDoc => {
-      res.status(200).send(updatedDoc)
-    }).catch(e => res.send(500).send({
-      error: "Kayıt sırasında bir hata oluştu"
-    }))
-  }).catch((e) => res.status(httpStatus.INTERNAL_SERVER_ERROR).send({error:"Kayıt sırasında bir problem oluştu"}));
-
+      mainTask.comments = mainTask.comments.filter(
+        (c) => c._id !== req.params.commendId
+      );
+      mainTask
+        .save()
+        .then((updatedDoc) => {
+          res.status(200).send(updatedDoc);
+        })
+        .catch((e) =>
+          res.send(500).send({
+            error: "Kayıt sırasında bir hata oluştu",
+          })
+        );
+    })
+    .catch((e) =>
+      res
+        .status(httpStatus.INTERNAL_SERVER_ERROR)
+        .send({ error: "Kayıt sırasında bir problem oluştu" })
+    );
 };
 
 const deleteComment = (req, res) => {
-
   findOne({
     _id: req.params.id,
-  }).then((mainTask) => {
-    if (!mainTask) {
-      return res
-        .status(httpStatus.NOT_FOUND)
-        .send({ message: "böyle bir kullanıcı bulunmamaktadır" });
-    }
-    console.log(mainTask);
+  })
+    .then((mainTask) => {
+      if (!mainTask) {
+        return res
+          .status(httpStatus.NOT_FOUND)
+          .send({ message: "böyle bir kullanıcı bulunmamaktadır" });
+      }
 
-    const comment = { 
-      ...req.body,
-      comment_at:new Date(),
-      user_id : req.user
-    }
-    mainTask.comments.push(comment);
-    mainTask.save().then(updatedDoc => {
-      res.status(200).send(updatedDoc)
-    }).catch(e => res.send(500).send({
-      error: "Kayıt sırasında bir hata oluştu"
-    }))
-  }).catch((e) => res.status(httpStatus.INTERNAL_SERVER_ERROR).send({error:"Kayıt sırasında bir problem oluştu"}));
-
+      mainTask.comments = mainTask.comments.filter(c => c._id.toString() !== req.params.commendId)
+      mainTask
+        .save()
+        .then((updatedDoc) => {
+          res.status(200).send(updatedDoc);
+        })
+        .catch((e) =>
+          res.send(500).send({
+            error: "Kayıt sırasında bir hata oluştu",
+          })
+        );
+    })
+    .catch((e) =>
+      res
+        .status(httpStatus.INTERNAL_SERVER_ERROR)
+        .send({ error: "Kayıt sırasında bir problem oluştu" })
+    );
 };
 
+const 
 
 module.exports = {
   create,
@@ -126,5 +136,4 @@ module.exports = {
   deleteTask,
   makeComment,
   deleteComment,
-  
 };
