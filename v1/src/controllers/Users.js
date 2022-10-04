@@ -38,7 +38,7 @@ const index = (req, res) => {
 
 const login = (req, res) => {
   req.body.password = passwordToHash(req.body.password);
-  loginUser(req.body)
+  UserService.findOne(req.body)
     .then((user) => {
       if (!user) {
         return res
@@ -62,8 +62,7 @@ const login = (req, res) => {
 };
 
 const projectList = (req, res) => {
-  console.log(req.user);
-  projectService
+  ProjectService
     .list({ user_id: req.user?._id })
     .then((projects) => {
       res.status(httpStatus.OK).send(projects);

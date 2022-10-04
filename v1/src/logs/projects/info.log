@@ -20,3 +20,5 @@
 {"level":"info","message":{"_id":"6337c8579f7a4890f8ca92b3","createdAt":"2022-10-01T04:55:51.809Z","name":"deneme section","updatedAt":"2022-10-01T04:55:51.809Z","user_id":"633694c3603e04e9fa91555d"},"service":"user-service"}
 {"level":"info","message":{"_id":"633bebf4031784d0238518b6","createdAt":"2022-10-04T08:16:52.175Z","name":"deneme projesi 1","updatedAt":"2022-10-04T08:16:52.175Z","user_id":"6334fd7a281885c6bbc3bdd6"},"service":"user-service"}
 {"level":"info","message":{"_id":"633bf924be7b47631e95d845","createdAt":"2022-10-04T09:13:08.994Z","name":"deneme","updatedAt":"2022-10-04T09:13:08.994Z","user_id":"633694c3603e04e9fa91555d"},"service":"user-service"}
+{"level":"info","message":{"_id":"633c536c43c6fab32367ebb4","createdAt":"2022-10-04T15:38:20.587Z","updatedAt":"2022-10-04T15:38:20.587Z"},"service":"user-service"}
+{"level":"info","message":{"_id":"633c546e579463dc31582656","createdAt":"2022-10-04T15:42:38.457Z","updatedAt":"2022-10-04T15:42:38.457Z"},"service":"user-service"}
