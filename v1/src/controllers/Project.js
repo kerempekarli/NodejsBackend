@@ -1,6 +1,10 @@
 const { insert, list, modify, remove } = require("../services/Projects");
 const httpStatus = require("http-status");
 
+const Service = require("../services/Project")
+const projectService = new Service()
+
+
 const create = (req, res) => {
   req.body.user_id = req.user;
   insert(req.body)
@@ -13,7 +17,7 @@ const create = (req, res) => {
 };
 
 const index = (req, res) => {
-  list()
+  projectService.list()
     .then((response) => {
       res.status(httpStatus.OK).send(response);
     })
