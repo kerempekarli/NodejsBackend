@@ -1,13 +1,11 @@
-const { insert, list, modify, remove } = require("../services/Projects");
 const httpStatus = require("http-status");
-
 const Service = require("../services/Project")
-const projectService = new Service()
+const ProjectService = new Service()
 
 
 const create = (req, res) => {
   req.body.user_id = req.user;
-  insert(req.body)
+  ProjectService.create(req.body)
     .then((response) => {
       res.status(httpStatus.CREATED).send("response" + response);
     })
@@ -17,7 +15,7 @@ const create = (req, res) => {
 };
 
 const index = (req, res) => {
-  projectService.list()
+  ProjectService.list()
     .then((response) => {
       res.status(httpStatus.OK).send(response);
     })
@@ -30,7 +28,7 @@ const update = (req, res) => {
       message: "ID Bilgisi Eksik",
     });
   } else {
-    modify(req.params.id, req.body)
+    ProjectService.update(req.params.id, req.body)
       .then((updatedProject) => {
         res.status(httpStatus.OK).send(updatedProject);
       })
@@ -43,7 +41,7 @@ const update = (req, res) => {
 };
 
 const deleteProject = (req, res) => {
-  remove(req.params.id)
+   ProjectService.delete(req.params.id)
     .then((deletedProject) => {
       if(!deletedProject){
         res.status(httpStatus.NOT_FOUND).send({

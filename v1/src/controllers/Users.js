@@ -1,11 +1,9 @@
-const {
-  insert,
-  list,
-  loginUser,
-  modify,
-  remove,
-} = require("../services/Users");
-const projectService = require("../services/Projects");
+const ServiceForUser = require("../services/Users");
+const UserService = new ServiceForUser();
+
+const ServiceForProject = require("../services/Project");
+const ProjectService = new ServiceForProject();
+
 const httpStatus = require("http-status");
 const uuid = require("uuid");
 const path = require("path");
@@ -21,7 +19,7 @@ const { dirname } = require("path");
 const create = (req, res) => {
   req.body.password = passwordToHash(req.body.password);
 
-  insert(req.body)
+  UserService.create(req.body)
     .then((response) => {
       res.status(httpStatus.CREATED).send("response " + response);
     })
@@ -31,7 +29,7 @@ const create = (req, res) => {
 };
 
 const index = (req, res) => {
-  list()
+  UserService.list()
     .then((response) => {
       res.status(httpStatus.OK).send(response);
     })
@@ -78,8 +76,12 @@ const projectList = (req, res) => {
 };
 
 const resetPassword = (req, res) => {
-  uuid.v4()?.split("-")[0] || `usr-${new Date().getTime()}`;
-  modify({ email: req.body.email }, { password: passwordToHash(new_password) })
+  const new_password =
+    uuid.v4()?.split("-")[0] || `usr-${new Date().getTime()}`;
+  UserService.updateWhere(
+    { email: req.body.email },
+    { password: passwordToHash(new_password) }
+  )
     .then((updatedUser) => {
       if (!updatedUser) console.log("USER YOK:>>", updatedUser);
       eventEmitter.emit("send_email", {
@@ -101,7 +103,7 @@ const resetPassword = (req, res) => {
 };
 
 const update = (req, res) => {
-  modify({ _id: req.user?._id }, req.body)
+  UserService.update({ _id: req.user?._id }, req.body)
     .then((updatedUser) => {
       res.status(200).send(updatedUser);
     })
@@ -114,8 +116,7 @@ const update = (req, res) => {
 
 const changePassword = (req, res) => {
   req.body.password = passwordToHash(req.body.password);
-  console.log(req.body.password);
-  modify({ _id: req.user?._id }, req.body)
+  UserService.update({ _id: req.user?._id }, req.body)
     .then((updatedUser) => {
       res.status(200).send(updatedUser);
     })
@@ -129,7 +130,7 @@ const changePassword = (req, res) => {
 };
 
 const deleteUser = (req, res) => {
-  remove(req.params.id)
+  UserService.delete(req.params.id)
     .then((deletedUser) => {
       if (!deletedUser) {
         res.status(httpStatus.NOT_FOUND).send({
@@ -149,7 +150,7 @@ const deleteUser = (req, res) => {
 
 const updateProfileImage = (req, res) => {
   //! 1- Resim KONTROLÜ
-  console.log(req.files)
+  console.log(req.files);
 
   if (!req?.files?.profile_image) {
     res.status(httpStatus.BAD_REQUEST).send({
@@ -157,17 +158,29 @@ const updateProfileImage = (req, res) => {
     });
   }
 
-  const extension = path.extname(req.files.profile_image.name)
-  fileName = `${req?.user._id}.${extension}`
-  folderPath = path.join(__dirname, "../", "uploads/users",req.files.profile_image.name);
-  console.log("path", folderPath)
+  const extension = path.extname(req.files.profile_image.name);
+  fileName = `${req?.user._id}.${extension}`;
+  folderPath = path.join(
+    __dirname,
+    "../",
+    "uploads/users",
+    req.files.profile_image.name
+  );
   req.files.profile_image.mv(folderPath, function (err) {
     if (err) {
       return res.status(httpStatus.INTERNAL_SERVER_ERROR).send({ error: err });
     }
-    modify({_id: req.user._id}, {profile_image: fileName}).then(updatedUser => {
-        res.status(httpStatus[200]).send(updatedUser)
-    }).catch(e =>  res.status(httpStatus.INTERNAL_SERVER_ERROR).send({error: "Upload Başarılı fake kayıt sırasında bir hata oluştu"}))
+    UserService.update({ _id: req.user._id }, { profile_image: fileName })
+      .then((updatedUser) => {
+        res.status(httpStatus[200]).send(updatedUser);
+      })
+      .catch((e) =>
+        res
+          .status(httpStatus.INTERNAL_SERVER_ERROR)
+          .send({
+            error: "Upload Başarılı fake kayıt sırasında bir hata oluştu",
+          })
+      );
   });
   //! 2- Upload İşlemi
   //! 3- DB Save İşlemi

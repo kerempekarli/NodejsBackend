@@ -1,27 +1,16 @@
-const Section = require("../models/Sections");
+const BaseService = require("./BaseService.js");
+const BaseModel = require("../models/Sections")
+class Sections extends BaseService {
+    constructor(){
+        super(BaseModel)
+    }
 
-const insert = (sectionData) => {
+    list = (where) => {
+            return BaseModel.find(where || {}).populate({
+                path : "user_id",
+                select : "full_name email profile_image"
+            })
+    }
+}    
 
-  const tempSection = new Section(sectionData);
-  return tempSection.save();
-}
-
-const list = (where) => {
-   return Section.find(where || {}).populate({
-    path : "user_id",
-    select : "full_name email"
-   })
-}
-
-
-const modify = (id,data) => {
-  return Section.findByIdAndUpdate(id,data,{new: true})
-}
-const remove = (id) => {
-  return Section.findByIdAndDelete(id)
-}
-
-
-module.exports = {
-    insert, list, modify,remove
-};
+module.exports = Sections

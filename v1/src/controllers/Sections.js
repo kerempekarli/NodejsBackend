@@ -1,10 +1,14 @@
-const { insert, list, modify, remove } = require("../services/sections");
 const httpStatus = require("http-status");
+const Service = require("../services/Sections");
+const SectionService = new Service()
+const ServiceProject = require("../services/Project")
+const ProjectService = new ServiceProject()
+
 
 const create = (req, res) => {
 
   req.body.user_id = req.user._id;
-  insert(req.body)
+  SectionService.create(req.body)
     .then((response) => {
       res.status(httpStatus.CREATED).send("response" + response);
     })
@@ -14,9 +18,10 @@ const create = (req, res) => {
 };  
 
 const index = (req, res) => {
-  console.log(req.params.projectId)
+
     if(!req?.params?.projectId){return res.status(httpStatus.BAD_REQUEST).send({error: "Proje bilgisi eksik"})}
-  list({project_id: req.params.projectId})
+
+    SectionService.list({project_id: req.params.projectId})
     .then((response) => {
       res.status(httpStatus.OK).send(response);
     })
@@ -29,7 +34,7 @@ const update = (req, res) => {
       message: "ID Bilgisi Eksik",
     });
   } else {
-    modify(req.params.id, req.body)
+    SectionService.update(req.params.id, req.body)
       .then((updatedDoc) => {
         res.status(httpStatus.OK).send(updatedDoc);
       })
@@ -42,7 +47,7 @@ const update = (req, res) => {
 };
 
 const deleteSection = (req, res) => {
-  remove(req.params.id)
+  SectionService.delete(req.params.id)
     .then((deletedProject) => {
       if(!deletedProject){
         res.status(httpStatus.NOT_FOUND).send({   
