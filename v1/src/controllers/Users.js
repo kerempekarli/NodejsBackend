@@ -118,6 +118,7 @@ const changePassword = (req, res) => {
   UserService.update({ _id: req.user?._id }, req.body)
     .then((updatedUser) => {
       res.status(200).send(updatedUser);
+      console.log(req.user._id)
     })
     .catch(
       (e) =>
