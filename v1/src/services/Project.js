@@ -6,7 +6,7 @@ class Projects extends BaseService {
     }
 
     list = (where) => {
-            return BaseModel.find(where || {}).populate({
+            return this.BaseModel.find(where || {}).populate({
                 path:"user_id", 
                 select:"full_name email profile_image"
             })

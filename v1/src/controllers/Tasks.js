@@ -1,9 +1,13 @@
 const { insert, list, modify, remove, findOne } = require("../services/tasks");
 const httpStatus = require("http-status");
 
+const TaskServiceClass = require("../services/Taskss")
+const TaskService = new TaskServiceClass();
+
+
 const create = (req, res) => {
   req.body.user_id = req.user._id;
-  insert(req.body)
+  TaskService.create(req.body)
     .then((response) => {
       res.status(httpStatus.CREATED).send("response" + response);
     })
@@ -17,7 +21,7 @@ const index = (req, res) => {
   if (!req?.params?.taskId) {
     return res.status(httpStatus.BAD_REQUEST).send({ error: "Proje bilgisi eksik" });
   }
-  list({ task_id: req.params.taskId })
+  TaskService.list({ task_id: req.params.taskId })
     .then((response) => {
       res.status(httpStatus.OK).send(response);
     })
@@ -30,7 +34,7 @@ const update = (req, res) => {
       message: "ID Bilgisi Eksik",
     });
   } else {
-    modify(req.params.id, req.body)
+    TaskService.update(req.params.id, req.body)
       .then((updatedDoc) => {
         res.status(httpStatus.OK).send(updatedDoc);
       })
@@ -39,7 +43,7 @@ const update = (req, res) => {
 };
 
 const deleteTask = (req, res) => {
-  remove(req.params.id)
+  TaskService.delete(req.params.id)
     .then((deletedProject) => {
       if (!deletedProject) {
         res.status(httpStatus.NOT_FOUND).send({
@@ -55,7 +59,7 @@ const deleteTask = (req, res) => {
 
 const makeComment = (req, res) => {
   req.body.user_id = req.user;
-  findOne({
+  TaskService.findOne({
     _id: req.params.id,
   })
     .then((mainTask) => {
@@ -84,7 +88,7 @@ const makeComment = (req, res) => {
 };
 
 const deleteComment = (req, res) => {
-  findOne({
+  TaskService.findOne({
     _id: req.params.id,
   })
     .then((mainTask) => {
@@ -110,7 +114,7 @@ const deleteComment = (req, res) => {
 const addSubtask = (req, res) => {
   if (!req.params.id) return res.status(400).send({ message: "ID bilgisi gerekli" });
   req.body.user_id = req.user;
-  findOne({
+  TaskService.findOne({
     _id: req.params.id,
   })
     .then((mainTask) => {
@@ -142,7 +146,7 @@ const fetchTask = (req,res) => {
   if (!req.params.id) {
     return res.status(400).send({ message: "ID bilgisi gerekli." });
   }
-  findOne({
+  TaskService.findOne({
     _id: req.params.id,
   },true)
     .then((task) => {
@@ -153,6 +157,9 @@ const fetchTask = (req,res) => {
     })
     .catch((e) => res.status(500).send(e));
 };
+
+
+
 module.exports = {
   create,
   index,
