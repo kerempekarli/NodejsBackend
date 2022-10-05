@@ -24,4 +24,9 @@ app.listen(process.env.APP_PORT , () => {
     app.use("/users",UserRoutes)
     app.use("/sections",SectionRoutes)
     app.use("/tasks",TaskRoutes)
+
+    app.use((req,res,next) => {
+        console.log("Bu arkadaş çalıştı")
+        next()
+    })
 })
