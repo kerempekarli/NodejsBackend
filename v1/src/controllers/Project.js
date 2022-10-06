@@ -1,6 +1,7 @@
 const httpStatus = require("http-status");
 const Service = require("../services/Project");
 const ProjectService = new Service();
+const ApiError = require("../errors/ApiError");
 
 class Projects {
   create(req, res) {
@@ -22,7 +23,7 @@ class Projects {
       .catch((e) => res.status(httpStatus[500]).send("hata"));
   }
 
-  update(req, res) {
+  update(req, res, next) {
     if (!req.params?.id) {
       return res.status(httpStatus.BAD_REQUEST).send({
         message: "ID Bilgisi Eksik",
@@ -30,13 +31,12 @@ class Projects {
     } else {
       ProjectService.update(req.params.id, req.body)
         .then((updatedProject) => {
+          if (!updatedProject) {
+            return next(new ApiError("Böyle bir kayıt bulunmamaktadır", 404));
+          }
           res.status(httpStatus.OK).send(updatedProject);
         })
-        .catch((e) =>
-          res
-            .status(httpStatus.INTERNAL_SERVER_ERROR)
-            .send({ error: "Kayıt sırasında bir problem oluştu." })
-        );
+        .catch((e) => next(new ApiError(e?.message, e?.statusCode)));
     }
   }
 
@@ -59,11 +59,4 @@ class Projects {
       );
   }
 }
-module.exports = Projects;
-
-module.exports = {
-  create,
-  index,
-  update,
-  deleteProject,
-};
+module.exports = new Projects();

@@ -12,6 +12,7 @@ const {
 const uuid = require("uuid");
 const events = require("./scripts/events");
 const path = require("path");
+const errorHandler = require("./middlewares/errorHandler")
 
 config();
 loaders();
@@ -36,8 +37,5 @@ app.listen(process.env.APP_PORT, () => {
     next(error);
   });
   // Error Handler
-  app.use((error, req, res, next) => {
-    console.log("Error middleware trigged!!");
-    next()
-  });
+  app.use(errorHandler);
 });
