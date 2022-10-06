@@ -32,11 +32,12 @@ class Projects {
       ProjectService.update(req.params.id, req.body)
         .then((updatedProject) => {
           if (!updatedProject) {
+            console.log(updated)
             return next(new ApiError("Böyle bir kayıt bulunmamaktadır", 404));
           }
           res.status(httpStatus.OK).send(updatedProject);
         })
-        .catch((e) => next(new ApiError(e?.message, e?.statusCode)));
+        .catch((e) => next(new ApiError("TRYCATCH",400)));
     }
   }
 

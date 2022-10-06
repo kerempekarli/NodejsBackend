@@ -25,3 +25,4 @@
 {"level":"info","message":{"_id":"633d0c3e985f0c59b48d1a85","createdAt":"2022-10-05T04:46:54.262Z","updatedAt":"2022-10-05T04:46:54.262Z"},"service":"user-service"}
 {"level":"info","message":{"_id":"633d0c9ba01c8dad0323dc32","createdAt":"2022-10-05T04:48:27.602Z","updatedAt":"2022-10-05T04:48:27.602Z"},"service":"user-service"}
 {"level":"info","message":{"_id":"633d0d18a043f78dfeca7e3d","createdAt":"2022-10-05T04:50:32.871Z","updatedAt":"2022-10-05T04:50:32.871Z"},"service":"user-service"}
+{"level":"info","message":{"_id":"633e5bbca8de46f6b1ceab9a","createdAt":"2022-10-06T04:38:20.177Z","name":"deneme projesi 1","updatedAt":"2022-10-06T04:38:20.177Z","user_id":"6334fd7a281885c6bbc3bdd6"},"service":"user-service"}
