@@ -6,7 +6,7 @@ const idChecker = (field) => (req,res,next) => {
         return next(new ApiError("Lütfen geçerli bir ID bilgisi giriniz",400));
         
     }
-    next()
+    next()   
 }
 
 module.exports = idChecker
